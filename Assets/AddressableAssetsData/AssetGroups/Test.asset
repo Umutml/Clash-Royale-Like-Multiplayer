@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  m_GroupName: Test
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f3f6ad6778c89234babeb452e90d1dac
+  m_SerializeEntries:
+  - m_GUID: bac0ec8fdfc8e8f4085f170bbc96b379
+    m_Address: Assets/Imports/Ventuar/MedievalCastlePack/Prefabs/Castle/Towers/CircleTower.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6249193a812375b46b982f06419b1a3f
+    m_Address: Assets/Imports/PolygonVikings/Demo/DemoPolygonVikings.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 6d605b1c6807d3945b437e4c84635d2a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 003efa6a5ff1d104fa9d31a6ccb3d49c, type: 2}
+    - {fileID: 11400000, guid: 2d3c4e2a3cd67de42a9811337e8c22c4, type: 2}

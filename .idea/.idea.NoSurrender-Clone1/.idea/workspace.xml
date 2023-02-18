@@ -9,11 +9,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Enemies/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Enemies/Ghost.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Enemies/Skeleton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Managers/CoinManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Player/Arrow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Player/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AddressablesManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Towers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Editor/GUI/AddressableAssetsWindow.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,7 +77,9 @@
       <workItem from="1676283499239" duration="14551000" />
       <workItem from="1676363039699" duration="11623000" />
       <workItem from="1676447392496" duration="17875000" />
-      <workItem from="1676531234499" duration="20376000" />
+      <workItem from="1676531234499" duration="21048000" />
+      <workItem from="1676608801554" duration="859000" />
+      <workItem from="1676625741891" duration="3378000" />
     </task>
     <servers />
   </component>

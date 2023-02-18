@@ -8,17 +8,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private bool _isGameOver;
     [SerializeField]private GameObject endPanel,winPanel;
+    [SerializeField]private AddressablesManager _addressablesManager;
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         Instance = this;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void GameOver()
@@ -34,11 +29,12 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         winPanel.SetActive(true);
-        Invoke(nameof(RestartGame),3f);
+        Invoke(nameof(RestartGame),2f);
     }
 
     private void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _addressablesManager.AddressableScene();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
