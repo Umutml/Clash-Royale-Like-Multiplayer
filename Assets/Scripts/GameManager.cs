@@ -28,13 +28,19 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        if (_isGameOver) return;
+        
         winPanel.SetActive(true);
-        Invoke(nameof(RestartGame),2f);
+        Invoke(nameof(GoNextLevel),2f);
+    }
+
+    private void GoNextLevel()
+    {
+        _addressablesManager.AddressableScene();
     }
 
     private void RestartGame()
     {
-        _addressablesManager.AddressableScene();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

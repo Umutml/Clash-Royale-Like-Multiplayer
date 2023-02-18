@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using DG.Tweening;
 using Lean.Pool;
 using Unity.VisualScripting;
@@ -8,48 +10,48 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Ability Settings")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float currentHealth;
     [SerializeField] private float health;
-    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float damage;
     [SerializeField] private float distance;
-    [SerializeField] private Transform enemyBaseTransform;
-    [SerializeField] private Animator animator;
-    [SerializeField] private Transform shootPosition;
+   
+    [Header("Type Bools")]
     [SerializeField] private bool isRange;
     [SerializeField] private bool isMelee;
+    [SerializeField] private bool isTower,isBase;
+    
+    [Header("Referances")]
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private Transform enemyBaseTransform;
+    [SerializeField] private Transform shootPosition;
     [SerializeField] private GameObject arrowPrefab;
-    [SerializeField] private float damage;
-    private NavMeshAgent _agent;
-
-    private GameObject _closestEnemy;
-
-    private bool isTargetLocated;
-    [SerializeField]private bool isTower,isBase;
-
     [SerializeField] private GameObject hpSliderGo;
-    [SerializeField]private Slider slider;
+    [SerializeField] private Slider slider;
+    
+    private NavMeshAgent _agent;
+    private Animator _animator;
+    private GameObject _closestEnemy;
     
     private void Start()
     {
         if (!isTower)
         {
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
             _agent.SetDestination(enemyBaseTransform.position);
             _agent.speed = moveSpeed;
         }
         
         slider.maxValue = health;
-        slider.value = currentHealth;
+        slider.value = currentHealth; // Slider maxHealth And CurrentHealth set;
         
         if (isMelee)
-        {
             shootPosition = null;
-        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isTower) return;
         DistanceCheck();
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
     {
         currentHealth -= value;
         if (currentHealth <= 0) Death();
-        UpdateHealth();
+        UpdateHealth();  // Update HealthBar slider method
     }
 
     private void Death()
@@ -74,37 +76,41 @@ public class Player : MonoBehaviour
 
     private void DistanceCheck()
     {
+        // Check enemies given distance variable and choose closest one
         var hitColliders = Physics.OverlapSphere(transform.position, distance, enemyLayer);
 
         if (hitColliders.Length == 0)
         {
             _agent.speed = moveSpeed;
-            animator.SetBool("isAttacking", false);
-            animator.SetBool("isRunning", true);
+            _animator.SetBool("isAttacking", false);
+            _animator.SetBool("isRunning", true);
             return;
         }
 
         _closestEnemy = hitColliders[0].gameObject;
-        Vector3 tempCloses = _closestEnemy.transform.position;
-        tempCloses.y = transform.position.y;
+        Vector3 tempCloses = _closestEnemy.transform.position;  // Give destination and lookat closest just y axis
+        tempCloses.y = transform.position.y;                
         transform.LookAt(tempCloses);
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isAttacking", true);
+        
+        _animator.SetBool("isRunning", false);
+        _animator.SetBool("isAttacking", true);
         _agent.speed = 0;
     }
 
-    private void Attack()
+    private void Attack()  // ------ Calling from animation attack event ------ //
     {
+        
         if (_closestEnemy == null) return;
-        // OBJECT POOLING
+        
         if (isRange)
         {
-            var cloneArrow = LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity);
+            // OBJECT POOLING FOR SPAWNED ARROWS
+            var cloneArrow = LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity); 
             cloneArrow.GetComponent<Arrow>().isPlayer = false;
             cloneArrow.transform.forward = _closestEnemy.transform.position;
             cloneArrow.GetComponent<Arrow>().targetTransform = _closestEnemy.transform;
+            cloneArrow.GetComponent<Arrow>().arrowDamage = damage;
         }
-
         if (isMelee)
         {
             _closestEnemy.GetComponent<Enemy>().TakeDamage(damage);
@@ -115,10 +121,5 @@ public class Player : MonoBehaviour
     {
         slider.value = currentHealth;
     }
-    
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, distance);
-    }
+   
 }

@@ -34,7 +34,7 @@ MonoBehaviour:
     - m_Suffix: CcdBadgeName
       m_Value: latest
     - m_Suffix: PromoteOnly
-      m_Value: True
+      m_Value: False
     - m_Suffix: BuildPath
       m_Value: CCDBuildData/f1250808-80f3-48aa-9e30-651a1bdbda78/latest
     - m_Suffix: LoadPath

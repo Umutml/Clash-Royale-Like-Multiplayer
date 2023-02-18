@@ -62,9 +62,9 @@ MonoBehaviour:
       - m_Id: a65378fd3e757584aa431b1cc9824d55
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: e74e131384011324b96ec7701d3d68eb
-        m_Value: ServerData/[BuildTarget]
+        m_Value: CCDBuildData/f1250808-80f3-48aa-9e30-651a1bdbda78/latest
       - m_Id: 6534300b4abf61c45a8025c52364a6e3
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: https://58b5d52f-05c5-4730-a13e-38d1df37a16e.client-api.unity3dusercontent.com/client_api/v1/buckets/f1250808-80f3-48aa-9e30-651a1bdbda78/release_by_badge/latest/entry_by_path/content/?path=
     - m_InheritedParent: 
       m_Id: 7e9a212a22cb3c44dbecad38c167ed9d
       m_ProfileName: New Profile

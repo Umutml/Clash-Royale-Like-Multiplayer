@@ -71,8 +71,8 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7559304048245111294}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -878,24 +878,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e29aa5f1d46182449970fbe1d8ab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1.5
   moveSpeed: 2
   currentHealth: 3
   health: 3
+  distance: 8
+  isMelee: 0
+  isRange: 1
+  isTower: 0
+  isBase: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
-  distance: 8
   playerBaseTransform: {fileID: 5864486887035599377, guid: 4de2c3328f66b7d409d416f6f3bb1f3b, type: 3}
-  arrowPrefab: {fileID: 8615100112981678891, guid: 479be2338872d7e4f8afb00ae60a53e4, type: 3}
-  animator: {fileID: 0}
-  closestEnemy: {fileID: 0}
-  isMelee: 0
-  isRange: 1
   shootPosition: {fileID: 4750215808074053767}
-  isTower: 0
+  arrowPrefab: {fileID: 8615100112981678891, guid: 479be2338872d7e4f8afb00ae60a53e4, type: 3}
   hpSliderGo: {fileID: 8657729848572886510}
   slider: {fileID: 8657729848173348166}
+  closestEnemy: {fileID: 0}
 --- !u!65 &2958835001693037242
 BoxCollider:
   m_ObjectHideFlags: 0
