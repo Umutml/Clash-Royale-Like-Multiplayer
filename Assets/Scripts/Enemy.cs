@@ -1,5 +1,3 @@
-using System;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -19,7 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isTower;
     [SerializeField] private bool isBase;
     
-    [Header("Referances")]
+    [Header("References")]
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform playerBaseTransform;
     [SerializeField] private Transform shootPosition;
@@ -36,6 +34,7 @@ public class Enemy : MonoBehaviour
    
     private void Start()
     {
+        // If is not tower initialize NavMeshAgent and Animator components
         if (!isTower)
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -80,6 +79,7 @@ public class Enemy : MonoBehaviour
 
         if (hitColliders.Length == 0)
         {
+            // If no enemies are detected, move towards player base
             if (_targetLocated)
             {
                 _agent.speed = moveSpeed;
@@ -96,14 +96,15 @@ public class Enemy : MonoBehaviour
 
         closestEnemy = hitColliders[0].gameObject;
         _targetLocated = true;
-        
-        _agent.SetDestination(closestEnemy.transform.position);
-        Vector3 tempCloses = closestEnemy.transform.position;
+
+        var closestPos = closestEnemy.transform.position;
+        _agent.SetDestination(closestPos);
+        Vector3 tempCloses = closestPos;
         tempCloses.y = transform.position.y;                    // Give destination and lookat closest just y axis
         transform.LookAt(tempCloses);
         
         
-        var attackDist = Vector3.Distance(transform.position, closestEnemy.transform.position);
+        var attackDist = Vector3.Distance(transform.position, closestPos);
         if (attackDist-0.2f <= _agent.stoppingDistance && !_isAttacking)
         {
             _animator.SetBool("isRunning", false);

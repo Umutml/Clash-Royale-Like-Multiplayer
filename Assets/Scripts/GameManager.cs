@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private bool _isGameOver;
     [SerializeField]private GameObject endPanel,winPanel;
-    [SerializeField]private AddressablesManager _addressablesManager;
+    [SerializeField]private AddressablesManager addressablesManager;
     
     
     void Start()
@@ -36,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void GoNextLevel()
     {
-        _addressablesManager.AddressableScene();
+        addressablesManager.AddressableScene();
     }
 
     private void RestartGame()

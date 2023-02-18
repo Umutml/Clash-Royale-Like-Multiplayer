@@ -59,6 +59,7 @@ public class Arrow : MonoBehaviour
     
     private void DistanceCheck()
     {
+        // If the arrow is close enough to the target deal damage and despawn using objectpool
         if (Vector3.Distance(transform.position, targetPos+Vector3.up) < 0.2f)
         {
             if (targetTransform == null)

@@ -1,11 +1,6 @@
-using System;
-using System.Reflection;
-using DG.Tweening;
 using Lean.Pool;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Animations;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -22,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isMelee;
     [SerializeField] private bool isTower,isBase;
     
-    [Header("Referances")]
+    [Header("References")]
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform enemyBaseTransform;
     [SerializeField] private Transform shootPosition;
@@ -88,7 +83,7 @@ public class Player : MonoBehaviour
         }
 
         _closestEnemy = hitColliders[0].gameObject;
-        Vector3 tempCloses = _closestEnemy.transform.position;  // Give destination and lookat closest just y axis
+        Vector3 tempCloses = _closestEnemy.transform.position;  // Give destination and look at closest just y axis
         tempCloses.y = transform.position.y;                
         transform.LookAt(tempCloses);
         

@@ -29,7 +29,8 @@ public class EnemySpawner : MonoBehaviour
         cloneEnemy.transform.DOMoveY(5, 0.5f).From().SetEase(Ease.Linear);
     }
 
-    Vector3 GetRandomSpawnPosition()
+    
+    Vector3 GetRandomSpawnPosition()         // Generates a random spawn position within the spawn area
     {
         Vector3 tempPosition = transform.position;
 
@@ -39,8 +40,5 @@ public class EnemySpawner : MonoBehaviour
 
         return tempPosition;
     }
-
-
-    
-    
+ 
 }
