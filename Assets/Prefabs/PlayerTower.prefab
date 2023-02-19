@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1105534658717585218}
   - component: {fileID: 1105534658716132048}
   - component: {fileID: 1469484804}
+  - component: {fileID: 2089723267}
+  - component: {fileID: 1469484805}
   m_Layer: 7
   m_Name: PlayerTower
   m_TagString: Untagged
@@ -98,22 +100,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  currentHealth: 0
-  health: 0
+  currentHealth: 25
+  health: 25
+  damage: 0
+  distance: 0
+  isRange: 0
+  isMelee: 0
+  isBase: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
-  distance: 0
   enemyBaseTransform: {fileID: 0}
-  animator: {fileID: 0}
   shootPosition: {fileID: 0}
-  isRange: 0
-  isMelee: 0
   arrowPrefab: {fileID: 0}
-  damage: 0
-  isTower: 1
-  hpSliderGo: {fileID: 0}
-  slider: {fileID: 0}
+  hpSliderGo: {fileID: 6939213217023468642}
+  slider: {fileID: 6939213217431411914}
+--- !u!65 &2089723267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105534658714453684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7780838, y: 5.6521707, z: 3.210949}
+  m_Center: {x: 0.0047416687, y: 2.8260853, z: -0.007871568}
+--- !u!65 &1469484805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105534658714453684}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7780838, y: 5.6521707, z: 3.210949}
+  m_Center: {x: 0.0047416687, y: 2.8260853, z: -0.007871568}
 --- !u!1001 &6451211675830653142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,8 +262,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
+--- !u!1 &6939213217023468642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4164219356413965492, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
+  m_PrefabInstance: {fileID: 6451211675830653142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6939213217023468646 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4164219356413965488, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
   m_PrefabInstance: {fileID: 6451211675830653142}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6939213217431411914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4164219356266155036, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
+  m_PrefabInstance: {fileID: 6451211675830653142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

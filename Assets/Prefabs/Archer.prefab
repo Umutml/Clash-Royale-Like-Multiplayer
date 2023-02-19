@@ -2430,11 +2430,12 @@ MonoBehaviour:
   health: 5
   damage: 1
   distance: 5
+  healAmount: 0
   isRange: 1
   isMelee: 0
-  isTower: 0
   isBase: 0
-  enemyLayer:
+  isHealer: 0
+  targetLayer:
     serializedVersion: 2
     m_Bits: 64
   enemyBaseTransform: {fileID: 741413427998332910, guid: fbc45c774337fe842a1832b0a55192e5, type: 3}
@@ -2442,6 +2443,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8615100112981678891, guid: d06a3c70c98deb5438492d387dc80622, type: 3}
   hpSliderGo: {fileID: 77793475383628800}
   slider: {fileID: 77793475260935336}
+  _closestEnemy: {fileID: 0}
 --- !u!95 &6547429523275208720
 Animator:
   serializedVersion: 4
@@ -2470,7 +2472,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7585900827639955707}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
