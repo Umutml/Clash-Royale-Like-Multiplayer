@@ -28,9 +28,8 @@ public class DragDrop : MonoBehaviour
         if (Physics.Raycast(ray, out var raycastHit, layerMask) && selected)
         {
                 cloneArcher.transform.position = raycastHit.point;
-                dragCanvGroup.alpha = 0.5f;
+                dragCanvGroup.alpha = 0.1f;
         }
-
         if (touch.phase is TouchPhase.Ended or TouchPhase.Canceled && selected)
         {
             cloneArcher.GetComponent<Player>().enabled = true;
@@ -40,9 +39,10 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    public void SpawnArcher()
+    // Spawn units with costs
+    public void SpawnArcher() 
     {
-        UnitSpawner(archerPrefab,2);
+        UnitSpawner(archerPrefab,2); 
     }
 
     public void SpawnKnight()

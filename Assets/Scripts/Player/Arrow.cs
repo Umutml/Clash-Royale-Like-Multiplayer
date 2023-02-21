@@ -22,7 +22,6 @@ public class Arrow : MonoBehaviour
         {
             Lean.Pool.LeanPool.Despawn(gameObject);
         }
-        LookEnemy();
     }
 
     void Update()
@@ -31,7 +30,7 @@ public class Arrow : MonoBehaviour
         {
             targetPos = targetTransform.position;
         }
-        
+        LookEnemy();
         MoveToTarget();
         
     }
