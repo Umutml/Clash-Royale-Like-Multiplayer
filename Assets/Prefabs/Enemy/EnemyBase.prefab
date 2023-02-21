@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6880822240283529248}
   m_Layer: 6
   m_Name: EnemyBase
-  m_TagString: Untagged
+  m_TagString: NotHealable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,15 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e29aa5f1d46182449970fbe1d8ab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  moveSpeed: 0
-  currentHealth: 50
-  health: 50
-  distance: 0
-  isMelee: 0
-  isRange: 0
-  isBase: 1
-  playerLayer:
+  scrData: {fileID: 11400000, guid: 4d46fc265f5f7d54aa563998d1f9a4fc, type: 2}
+  targetLayer:
     serializedVersion: 2
     m_Bits: 0
   playerBaseTransform: {fileID: 0}
@@ -146,7 +139,6 @@ MonoBehaviour:
   arrowPrefab: {fileID: 0}
   hpSliderGo: {fileID: 7477309447794072752}
   slider: {fileID: 7477309448199922712}
-  closestEnemy: {fileID: 0}
 --- !u!65 &6880822240283529248
 BoxCollider:
   m_ObjectHideFlags: 0

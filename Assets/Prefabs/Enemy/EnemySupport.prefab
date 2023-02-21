@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e29aa5f1d46182449970fbe1d8ab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrData: {fileID: 11400000, guid: 5be60fce78afd7f4eab86813cdc1546d, type: 2}
   unitName: Shaman
   damage: 0
   moveSpeed: 1

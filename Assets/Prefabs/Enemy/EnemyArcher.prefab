@@ -2290,6 +2290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e29aa5f1d46182449970fbe1d8ab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrData: {fileID: 11400000, guid: b3359020e00ff9843952a45b56f2edca, type: 2}
   unitName: Archer
   damage: 1
   moveSpeed: 2

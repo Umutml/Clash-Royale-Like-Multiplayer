@@ -6,25 +6,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Ability Settings")]
-    [SerializeField] private string unitName;
-    [SerializeField] private float damage;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float health;
-    [SerializeField] private float distance;
-    [SerializeField] private float healAmount;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private int level;
-    [SerializeField] private float multiplier;
-    
-    private float currentHealth;
-    
-    [Header("Type Bools")]
-    [SerializeField] private bool isMelee;
-    [SerializeField] private bool isRange;
-    [SerializeField] private bool isBase;
-    [SerializeField] private bool isHealer;
-    
+
+    public ScriptableSettings scrData;
+   
     [Header("References")]
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private Transform playerBaseTransform;
@@ -33,8 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject hpSliderGo;
     [SerializeField] private Slider slider;
     
-    [SerializeField]private GameObject closestEnemy;
-    
+    private GameObject closestEnemy;
+    private float currentHealth;
     private bool _isAttacking;
     private bool _targetLocated;
     private NavMeshAgent _agent;
@@ -42,42 +26,42 @@ public class Enemy : MonoBehaviour
 
     private float AttackSpeed
     {
-        get => attackSpeed;
+        get => scrData.attackSpeed;
         set
         {
-            attackSpeed = value;
-            _animator.SetFloat("AttackSpeed", attackSpeed);
+            scrData.attackSpeed = value;
+            _animator.SetFloat("AttackSpeed", scrData.attackSpeed);
         }
     }
 
     private void Awake()
     {
-        CalculateLevelStats();
+        //CalculateLevelStats();
     }
 
     private void Start()
     {
         // If is not tower initialize NavMeshAgent and Animator components
-        if (!isBase)
+        if (!scrData.isBase)
         {
             _agent = GetComponent<NavMeshAgent>();
             _agent.SetDestination(playerBaseTransform.position);
-            _agent.speed = moveSpeed;
+            _agent.speed = scrData.moveSpeed;
             _animator = GetComponent<Animator>();
-            AttackSpeed = attackSpeed;
+            AttackSpeed = scrData.attackSpeed;
         }
 
-        currentHealth = health;
-        slider.maxValue = health;
+        currentHealth = scrData.health;
+        slider.maxValue = scrData.health;
         slider.value = currentHealth;   // Slider maxHealth And CurrentHealth set;
         
-        if (isMelee && isHealer)
+        if (scrData.isMelee && scrData.isHealer)
             shootPosition = null;
     }
 
     private void Update()
     {
-        if (isBase) return;
+        if (scrData.isBase) return;
 
         HpBarLookCamera();
         
@@ -98,7 +82,7 @@ public class Enemy : MonoBehaviour
     {
         hpSliderGo.gameObject.SetActive(true);
         
-        if (!isBase)
+        if (!scrData.isBase)
             EventParticleManager.OnDamageParticleSpawn(this.transform);
         
         currentHealth -= value;
@@ -108,7 +92,7 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-        if (isBase)
+        if (scrData.isBase)
             GameManager.Instance.Win();
         GameManager.Instance.PlayerKill++;
         Destroy(gameObject);
@@ -117,11 +101,11 @@ public class Enemy : MonoBehaviour
     private void DistanceCheck()
     {
         // Check enemies given distance variable and choose closest one
-        var hitColliders = Physics.OverlapSphere(transform.position, distance, targetLayer);
+        var hitColliders = Physics.OverlapSphere(transform.position, scrData.distance, targetLayer);
         _animator.SetBool("isRunning", true);
-        if (isHealer && hitColliders[0].CompareTag("NotHealable"))
+        if (scrData.isHealer && hitColliders[0].CompareTag("NotHealable"))
         {
-            _agent.speed = moveSpeed;
+            _agent.speed = scrData.moveSpeed;
             _animator.SetBool("isAttacking", false);
             _animator.SetBool("isRunning", true);
             _targetLocated = false;
@@ -129,7 +113,7 @@ public class Enemy : MonoBehaviour
         }
         if (hitColliders.Length == 0)
         {
-            _agent.speed = moveSpeed;
+            _agent.speed = scrData.moveSpeed;
             _animator.SetBool("isAttacking", false);
             _animator.SetBool("isRunning", true);
             _targetLocated = false;
@@ -138,10 +122,10 @@ public class Enemy : MonoBehaviour
        
         closestEnemy = hitColliders[0].gameObject;
         
-        if (isHealer)
+        if (scrData.isHealer)
         {
             var closestScript = closestEnemy.GetComponent<Enemy>();                          //Check closest unity health value for decide heal unit or return;
-            if (Math.Abs(closestScript.currentHealth - closestScript.health) < 0.8f) return; // Last value is a 0.5f Tolerance
+            if (Math.Abs(closestScript.currentHealth - closestScript.scrData.health) < 0.8f) return; // Last value is a 0.5f Tolerance
         }
         
         transform.DOLookAt(closestEnemy.transform.position, 0.25f, AxisConstraint.Y);
@@ -161,26 +145,26 @@ public class Enemy : MonoBehaviour
             return;
         }
         
-        if (isRange)
+        if (scrData.isRange)
         {
             // OBJECT POOLING FOR SPAWNED ARROWS
             var cloneArrow = Lean.Pool.LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity);
             cloneArrow.GetComponent<Arrow>().isPlayer = true;
             cloneArrow.transform.forward = closestEnemy.transform.position;
             cloneArrow.GetComponent<Arrow>().targetTransform = closestEnemy.transform;
-            cloneArrow.GetComponent<Arrow>().arrowDamage = damage;
+            cloneArrow.GetComponent<Arrow>().arrowDamage = scrData.damage;
         }
         
-        if (isMelee)
+        if (scrData.isMelee)
         {
-            closestEnemy.GetComponent<Player>().TakeDamage(damage);
+            closestEnemy.GetComponent<Player>().TakeDamage(scrData.damage);
         }
     }
     
     private void Heal()
     {
         if (closestEnemy != null)
-            closestEnemy.GetComponent<Enemy>().TakeHeal(healAmount);
+            closestEnemy.GetComponent<Enemy>().TakeHeal(scrData.healAmount);
         EventParticleManager.OnAuraParticleSpawn(this.transform);
         
         _targetLocated = false;
@@ -193,16 +177,15 @@ public class Enemy : MonoBehaviour
 
     public void TakeHeal(float value)
     {
-        currentHealth = Mathf.Clamp(currentHealth += value,0 , health);
+        currentHealth = Mathf.Clamp(currentHealth += value,0 , scrData.health);
         EventParticleManager.OnHealParticleSpawn(this.transform);
         UpdateHealth();
     }
-    private void CalculateLevelStats()
-    {
-        damage += level * multiplier;
-        moveSpeed += level * multiplier;
-        health += level * multiplier;
-        attackSpeed += level * multiplier;
-        distance += level * multiplier;
-    }
+    //private void CalculateLevelStats()
+    //{
+        //scrData.damage = scrData.damage + scrData.level * scrData.multiplier;
+       // scrData.moveSpeed = scrData.level * scrData.multiplier;
+       // scrData.health = scrData.level * scrData.multiplier;
+        //scrData.attackSpeed = scrData.level * scrData.multiplier;
+        //scrData.distance = scrData.level * scrData.multiplier;
 }

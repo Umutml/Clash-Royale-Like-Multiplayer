@@ -2204,6 +2204,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469898639}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &512378970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 512378971}
+  m_Layer: 0
+  m_Name: ServerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &512378971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512378970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7626868, y: 7.8457456, z: -15.511702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553324153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,7 +3742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 5061431289877623467}
-  timerValue: 45
+  timerValue: 10
   enemySpawner: {fileID: 1846140500}
 --- !u!4 &841289030
 Transform:
@@ -4197,10 +4228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1469484804, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1105534658714235294, guid: 894559dd5609a0d44bf3446275482063, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -4248,26 +4275,6 @@ PrefabInstance:
     - target: {fileID: 1105534658714453684, guid: 894559dd5609a0d44bf3446275482063, type: 3}
       propertyPath: m_Name
       value: PlayerTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217931192689, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217931192689, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894559dd5609a0d44bf3446275482063, type: 3}
@@ -7119,10 +7126,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1469484804, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1105534658714235294, guid: 894559dd5609a0d44bf3446275482063, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -7170,26 +7173,6 @@ PrefabInstance:
     - target: {fileID: 1105534658714453684, guid: 894559dd5609a0d44bf3446275482063, type: 3}
       propertyPath: m_Name
       value: PlayerTower (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217520807875, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217931192689, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939213217931192689, guid: 894559dd5609a0d44bf3446275482063, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894559dd5609a0d44bf3446275482063, type: 3}
@@ -7572,10 +7555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1481805471968320994, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
-      propertyPath: currentHealth
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 1481805471968320995, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7623,10 +7602,6 @@ PrefabInstance:
     - target: {fileID: 1481805472119528894, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
       propertyPath: m_Name
       value: PlayerBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481805472119528894, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
-      propertyPath: m_TagString
-      value: NotHealable
       objectReference: {fileID: 0}
     - target: {fileID: 1481805472538110889, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7724,10 +7699,6 @@ PrefabInstance:
     - target: {fileID: 4155832553486731385, guid: fbc45c774337fe842a1832b0a55192e5, type: 3}
       propertyPath: m_Name
       value: EnemyBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 4155832553486731385, guid: fbc45c774337fe842a1832b0a55192e5, type: 3}
-      propertyPath: m_TagString
-      value: NotHealable
       objectReference: {fileID: 0}
     - target: {fileID: 7477309448224298769, guid: fbc45c774337fe842a1832b0a55192e5, type: 3}
       propertyPath: m_AnchorMax.x

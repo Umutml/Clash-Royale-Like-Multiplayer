@@ -544,10 +544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e29aa5f1d46182449970fbe1d8ab958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrData: {fileID: 11400000, guid: 58922e064af6e7f4b9d55d17be372b13, type: 2}
   unitName: Knight
   damage: 1.5
   moveSpeed: 2
-  currentHealth: 10
   health: 10
   distance: 2
   healAmount: 0

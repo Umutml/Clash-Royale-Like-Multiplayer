@@ -23,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Imports/GUI PRO Kit - Casual Game/Scripts/PanelControlCasualGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MenuController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScritableObject/ScriptableSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Editor/Settings/AddressableAssetSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
@@ -101,6 +102,9 @@
       <workItem from="1676862236202" duration="2803000" />
       <workItem from="1676872800133" duration="1917000" />
       <workItem from="1676878855394" duration="20334000" />
+      <workItem from="1676960073379" duration="4197000" />
+      <workItem from="1676965991845" duration="59000" />
+      <workItem from="1676966077118" duration="4890000" />
     </task>
     <servers />
   </component>

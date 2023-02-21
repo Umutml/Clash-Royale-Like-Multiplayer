@@ -8,19 +8,20 @@ using System;
 public class MenuController : GlobalEventListener
 {
 
-    public void StartServer()
+    public void StartServer() // Host button 
     {
         BoltLauncher.StartServer();
     }
 
     public override void BoltStartDone() 
     {
-        BoltMatchmaking.CreateSession(sessionID: "test", sceneToLoad: "Game");
+        BoltMatchmaking.CreateSession(sessionID: "test", sceneToLoad: "GameScene");
     }
 
-    public void StartClient()
+    public void StartClient() // Client button
     {
         BoltLauncher.StartClient();
+
     }
 
     public override void SessionListUpdated(Map<Guid, UdpSession> sessionList)
@@ -34,9 +35,6 @@ public class MenuController : GlobalEventListener
             if (photonsession.Source == UdpSessionSource.Photon)
                 BoltMatchmaking.JoinSession(photonsession);
         }
-
     }
-
-
 
 }

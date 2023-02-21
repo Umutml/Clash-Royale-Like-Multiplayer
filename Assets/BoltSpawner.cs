@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class BoltSpawner : GlobalEventListener
 {
 
-    public GameObject knight;
+    public GameObject knightPrefab;
 
 
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
@@ -15,8 +15,8 @@ public class BoltSpawner : GlobalEventListener
         //base.SceneLoadLocalDone(scene, token);
         var randomX = Random.Range(-5, 5);
         Vector3 pos = new Vector3(randomX, 0, 0);
-        knight.GetComponent<Renderer>().sharedMaterial.color = Color.red;
-        BoltNetwork.Instantiate(knight, pos, Quaternion.identity);
+        knightPrefab.GetComponent<Renderer>().sharedMaterial.color = Color.red;
+        BoltNetwork.Instantiate(knightPrefab, pos, Quaternion.identity);
 
     }
 

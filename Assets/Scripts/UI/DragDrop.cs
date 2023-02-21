@@ -1,9 +1,10 @@
 using System;
+using Photon.Bolt;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour
+public class DragDrop : GlobalEventListener
 {
     [SerializeField] private GameObject archerPrefab,knighPrefab,eaglePrefab,shamanPrefab;
     [SerializeField] private LayerMask layerMask;
@@ -63,9 +64,9 @@ public class DragDrop : MonoBehaviour
     {
         if (!selected && BuyManager.Instance.mana >= value)
         {
-             cloneArcher = Instantiate(go, Input.mousePosition, Quaternion.identity, unitHolder);
+             cloneArcher = BoltNetwork.Instantiate(go, Input.mousePosition, Quaternion.identity);
              BuyManager.Instance.BuySoldier(value);
-            selected = true;
+             selected = true;
         }
     }
 }

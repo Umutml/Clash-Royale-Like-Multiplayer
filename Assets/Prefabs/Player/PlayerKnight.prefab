@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 2813484779118765999}
   - component: {fileID: 2958292400358345964}
   - component: {fileID: 5535481216957536950}
+  - component: {fileID: 5760539938854818582}
   m_Layer: 7
   m_Name: PlayerKnight
   m_TagString: Untagged
@@ -544,19 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d8b727580e3d4082da04111e578c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Knight
-  moveSpeed: 2
-  health: 10
-  damage: 1.5
-  distance: 2
-  healAmount: 0
-  attackSpeed: 1.5
-  multiplier: 0.1
-  level: 1
-  isRange: 0
-  isMelee: 1
-  isBase: 0
-  isHealer: 0
+  scrData: {fileID: 11400000, guid: 58922e064af6e7f4b9d55d17be372b13, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -565,8 +554,36 @@ MonoBehaviour:
   arrowPrefab: {fileID: 0}
   hpSliderGo: {fileID: 7048871241381384058}
   slider: {fileID: 7048871241529292754}
-  _closestEnemy: {fileID: 0}
   targetLocated: 0
+--- !u!114 &5760539938854818582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521793426818422412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 155943207, guid: 5b00bf8b25851d440940a40ec23344f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneGuid: 
+  _serializerGuid: 632c2363-790a-4f5b-b5c5-1166eafaef94
+  _prefabId: 3
+  _updateRate: 1
+  _autoFreezeProxyFrames: 0
+  _clientPredicted: 1
+  _allowInstantiateOnClient: 1
+  _persistThroughSceneLoads: 0
+  _sceneObjectDestroyOnDetach: 1
+  _sceneObjectAutoAttach: 1
+  _alwaysProxy: 0
+  _detachOnDisable: 1
+  _allowFirstReplicationWhenFrozen: 0
+  _autoRemoveChildEntities: 0
+  _entityBehaviourQueryOption: 0
+  _entityPriorityCalculatorQueryOption: 1
+  _entityReplicationFilterQueryOption: 1
 --- !u!1 &5521793426818423208
 GameObject:
   m_ObjectHideFlags: 0
