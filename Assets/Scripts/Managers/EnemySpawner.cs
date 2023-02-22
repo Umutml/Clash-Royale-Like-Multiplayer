@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using Photon.Bolt;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -25,8 +26,9 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         int randEnemy = Random.Range(0, enemyPrefabs.Length);
-        var cloneEnemy = Instantiate(enemyPrefabs[randEnemy], GetRandomSpawnPosition(), Quaternion.Euler(0,-180,0), enemyParent.transform);
-        cloneEnemy.transform.DOMoveY(5, 0.5f).From().SetEase(Ease.Linear);
+        //var cloneEnemy = BoltNetwork.Instantiate(enemyPrefabs[randEnemy], GetRandomSpawnPosition(), Quaternion.Euler(0,-180,0));
+        BoltNetwork.Instantiate(enemyPrefabs[randEnemy], GetRandomSpawnPosition(), Quaternion.Euler(0,-180,0));
+        //cloneEnemy.transform.DOMoveY(5, 0.5f).From().SetEase(Ease.Linear);
     }
 
     

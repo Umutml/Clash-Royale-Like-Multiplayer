@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Bolt;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -16,11 +17,14 @@ public class Arrow : MonoBehaviour
     private Vector3 targetPos;
 
 
+    
+    
     private void Start()
     {
         if(targetTransform == null)
         {
-            Lean.Pool.LeanPool.Despawn(gameObject);
+            Destroy(gameObject);
+            //Lean.Pool.LeanPool.Despawn(gameObject);
         }
     }
 
@@ -32,7 +36,6 @@ public class Arrow : MonoBehaviour
         }
         LookEnemy();
         MoveToTarget();
-        
     }
 
     private void FixedUpdate()
@@ -42,13 +45,14 @@ public class Arrow : MonoBehaviour
 
     private void MoveToTarget()
     {
-        float step = arrowSpeed * Time.deltaTime;
+        var step = arrowSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos+Vector3.up, step);
     }
     
     private void LookEnemy()
     {
         lookTimer += Time.deltaTime;
+        
         if (lookTimer > lookCooldown)
         {
             lookTimer = 0;
@@ -58,25 +62,21 @@ public class Arrow : MonoBehaviour
     
     private void DistanceCheck()
     {
+        
         // If the arrow is close enough to the target deal damage and despawn using objectpool
-        if (Vector3.Distance(transform.position, targetPos+Vector3.up) < 0.2f)
+        if (!(Vector3.Distance(transform.position, targetPos + Vector3.up) < 0.2f)) return;
+        
+        if(!isPlayer)
         {
-            if (targetTransform == null)
-            {
-                Lean.Pool.LeanPool.Despawn(gameObject); 
-                return;
-            }  
-             
-            if(!isPlayer)
-            {
+            if (targetTransform != null && targetTransform.GetComponent<BoltEntity>().IsAttached)
                 targetTransform.GetComponent<Enemy>().TakeDamage(arrowDamage);
-            }
-
-            if (isPlayer)
-            {
-                targetTransform.GetComponent<Player>().TakeDamage(arrowDamage);
-            }
-            Lean.Pool.LeanPool.Despawn(gameObject);
         }
+        if (isPlayer)
+        {
+            if (targetTransform!= null && targetTransform.GetComponent<BoltEntity>().IsAttached)
+                targetTransform.GetComponent<Player>().TakeDamage(arrowDamage);
+        }
+        //Lean.Pool.LeanPool.Despawn(gameObject);
+        Destroy(gameObject);
     }
 }

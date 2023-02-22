@@ -19,7 +19,12 @@ public class AddressablesManager : MonoBehaviour
     [SerializeField] private Button yesButton;
     [SerializeField] private Button noButton;
     [SerializeField] private GameObject popupPanel;
- 
+
+    private void Awake()
+    {
+        Caching.ClearCache();
+    }
+
     public void SpawnAddressablePrefab()
     {
         Debug.Log("Spawned Addressables");

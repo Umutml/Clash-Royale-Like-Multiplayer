@@ -1,10 +1,12 @@
 using System;
 using DG.Tweening;
+using Photon.Bolt;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EntityBehaviour<ICharacters>
 {
 
     public ScriptableSettings scrData;
@@ -34,12 +36,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public override void Attached()
     {
-        //CalculateLevelStats();
+       
     }
 
-    private void Start()
+    public override void SimulateOwner()
+    {
+       
+        if (currentHealth <= 0) Death();
+    }
+    
+    private void Awake()
     {
         // If is not tower initialize NavMeshAgent and Animator components
         if (!scrData.isBase)
@@ -50,7 +58,7 @@ public class Enemy : MonoBehaviour
             _animator = GetComponent<Animator>();
             AttackSpeed = scrData.attackSpeed;
         }
-
+        
         currentHealth = scrData.health;
         slider.maxValue = scrData.health;
         slider.value = currentHealth;   // Slider maxHealth And CurrentHealth set;
@@ -71,6 +79,8 @@ public class Enemy : MonoBehaviour
         }
     }
     
+  
+    
     private void HpBarLookCamera()
     {
         var campos = Camera.main.transform.position;
@@ -86,8 +96,8 @@ public class Enemy : MonoBehaviour
             EventParticleManager.OnDamageParticleSpawn(this.transform);
         
         currentHealth -= value;
-        if (currentHealth <= 0) Death();
-        UpdateHealth();     // Update HealthBar slider method
+        UpdateHealth(); 
+           // Update HealthBar slider method
     }
 
     private void Death()
@@ -95,7 +105,9 @@ public class Enemy : MonoBehaviour
         if (scrData.isBase)
             GameManager.Instance.Win();
         GameManager.Instance.PlayerKill++;
-        Destroy(gameObject);
+        
+            BoltNetwork.Destroy(this.gameObject);
+        
     }
 
     private void DistanceCheck()
@@ -130,6 +142,7 @@ public class Enemy : MonoBehaviour
         
         transform.DOLookAt(closestEnemy.transform.position, 0.25f, AxisConstraint.Y);
         
+        
         _animator.SetBool("isRunning", false);
         _animator.SetBool("isAttacking", true);
         _agent.speed = 0;
@@ -148,7 +161,8 @@ public class Enemy : MonoBehaviour
         if (scrData.isRange)
         {
             // OBJECT POOLING FOR SPAWNED ARROWS
-            var cloneArrow = Lean.Pool.LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity);
+            //var cloneArrow = Lean.Pool.LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity);
+            var cloneArrow = Instantiate(arrowPrefab, shootPosition.position, Quaternion.identity);
             cloneArrow.GetComponent<Arrow>().isPlayer = true;
             cloneArrow.transform.forward = closestEnemy.transform.position;
             cloneArrow.GetComponent<Arrow>().targetTransform = closestEnemy.transform;
@@ -172,7 +186,7 @@ public class Enemy : MonoBehaviour
     
     private void UpdateHealth()
     {
-        slider.DOValue(currentHealth, 0.5f);
+        slider.DOValue(currentHealth, 0.25f);
     }
 
     public void TakeHeal(float value)

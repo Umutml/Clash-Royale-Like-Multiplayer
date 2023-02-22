@@ -5,6 +5,9 @@ using Photon.Bolt;
 using Photon.Bolt.Matchmaking;
 using UdpKit;
 using System;
+using System.Linq;
+using Unity.VisualScripting;
+
 public class MenuController : GlobalEventListener
 {
 
@@ -15,7 +18,11 @@ public class MenuController : GlobalEventListener
 
     public override void BoltStartDone() 
     {
-        BoltMatchmaking.CreateSession(sessionID: "test", sceneToLoad: "GameScene");
+        if (BoltNetwork.IsServer)
+        {
+            BoltMatchmaking.CreateSession(sessionID: "test", sceneToLoad: "GameScene");
+        }
+        
     }
 
     public void StartClient() // Client button
@@ -37,4 +44,12 @@ public class MenuController : GlobalEventListener
         }
     }
 
+
+    
+   
+
+    private void OnApplicationQuit()
+    {
+        BoltNetwork.Shutdown();
+    }
 }

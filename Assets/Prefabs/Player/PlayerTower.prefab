@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 889801614}
   - component: {fileID: 6962421496965714069}
   - component: {fileID: 1469484804}
+  - component: {fileID: -8230105463341792927}
   m_Layer: 7
   m_Name: PlayerTower
   m_TagString: NotHealable
@@ -197,6 +198,35 @@ MonoBehaviour:
   hpSliderGo: {fileID: 6939213217023468642}
   slider: {fileID: 6939213217431411914}
   targetLocated: 0
+--- !u!114 &-8230105463341792927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105534658714453684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 155943207, guid: 5b00bf8b25851d440940a40ec23344f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneGuid: 
+  _serializerGuid: 632c2363-790a-4f5b-b5c5-1166eafaef94
+  _prefabId: 11
+  _updateRate: 1
+  _autoFreezeProxyFrames: 0
+  _clientPredicted: 1
+  _allowInstantiateOnClient: 1
+  _persistThroughSceneLoads: 0
+  _sceneObjectDestroyOnDetach: 1
+  _sceneObjectAutoAttach: 1
+  _alwaysProxy: 0
+  _detachOnDisable: 1
+  _allowFirstReplicationWhenFrozen: 0
+  _autoRemoveChildEntities: 0
+  _entityBehaviourQueryOption: 0
+  _entityPriorityCalculatorQueryOption: 1
+  _entityReplicationFilterQueryOption: 1
 --- !u!1001 &6451211675830653142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,9 +322,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4164219356413965490, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4164219356413965492, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164219356413965492, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4164219356915890599, guid: cec40b3a29fe9f04287f2b5a4e5c9af9, type: 3}
       propertyPath: m_AnchorMax.x

@@ -78,7 +78,7 @@ MonoBehaviour:
       - m_Id: e74e131384011324b96ec7701d3d68eb
         m_Value: CCDBuildData/f1250808-80f3-48aa-9e30-651a1bdbda78/latest
       - m_Id: 6534300b4abf61c45a8025c52364a6e3
-        m_Value: https://58b5d52f-05c5-4730-a13e-38d1df37a16e.client-api.unity3dusercontent.com/client_api/v1/buckets/f1250808-80f3-48aa-9e30-651a1bdbda78/release_by_badge/latest/entry_by_path/content/?path=
+        m_Value: https://58b5d52f-05c5-4730-a13e-38d1df37a16e.client-api.unity3dusercontent.com/client_api/v1/environments/production/buckets/f1250808-80f3-48aa-9e30-651a1bdbda78/releases/fce5ea85-ab71-44c4-8c6d-66c1aa23b3c1/entry_by_path/content/?path=
     m_ProfileEntryNames:
     - m_Id: 9e75444406774434db7d364c61bcb4c8
       m_Name: BuildTarget
@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec42e5f4f37502542bede1d8f2a4d9bd, type: 2}
   - {fileID: 11400000, guid: 3b8892aa0f0336643b6f46be581cb3e7, type: 2}
   - {fileID: 11400000, guid: 80c7215359c8c464aa5b4c57ded70eb7, type: 2}
-  m_ActiveProfileId: 7e9a212a22cb3c44dbecad38c167ed9d
+  m_ActiveProfileId: 09659cdc26ed9da4185db5f4af6f2ec2
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}

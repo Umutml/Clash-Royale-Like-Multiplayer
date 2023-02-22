@@ -12,7 +12,11 @@ public class DragDrop : GlobalEventListener
     [SerializeField]private CanvasGroup dragCanvGroup;
     private Camera mainCamera;
     private bool selected;
+    private GameObject newSpawn;
 
+    [SerializeField] private GameObject archerReal,knightReal,eagleReal,shamanReal;
+    [SerializeField] private GameObject enemyArcher, enemyKnight, enemyEagle, enemyShaman;
+    
     [SerializeField] private Transform unitHolder;
 
     private void Start()
@@ -33,38 +37,78 @@ public class DragDrop : GlobalEventListener
         }
         if (touch.phase is TouchPhase.Ended or TouchPhase.Canceled && selected)
         {
-            cloneArcher.GetComponent<Player>().enabled = true;
-            cloneArcher.GetComponent<NavMeshAgent>().enabled = true;
-            dragCanvGroup.alpha = 1;
-            selected = false;
+            BoltNetwork.Instantiate(newSpawn, cloneArcher.transform.position, Quaternion.identity);
+            Destroy(cloneArcher);
+            //var cloneAgent = cloneArcher.GetComponent<NavMeshAgent>();
+            //NavMeshHit closestHit;
+            //if (NavMesh.SamplePosition (transform.position, out closestHit, 100f, NavMesh.AllAreas)) {
+                //transform.position = closestHit.position;
+                //cloneAgent.enabled = true;
+                //cloneArcher.GetComponent<Player>().enabled = true;
+                dragCanvGroup.alpha = 1;
+                selected = false;
+            //}
         }
     }
 
     // Spawn units with costs
     public void SpawnArcher() 
     {
-        UnitSpawner(archerPrefab,2); 
+        UnitSpawner(archerPrefab,2);
+        if (BoltManager.Instance.playerCount == 1)
+        {
+            newSpawn = archerReal;
+        }
+        else
+        {
+            newSpawn = enemyArcher;
+        }
+        
     }
 
     public void SpawnKnight()
     {
         UnitSpawner(knighPrefab,3);
+        if (BoltManager.Instance.playerCount == 1)
+        {
+            newSpawn = knightReal;
+        }
+        else
+        {
+            newSpawn = enemyKnight;
+        }
     }
 
     public void SpawnEagle()
     {
         UnitSpawner(eaglePrefab,4);
+        if (BoltManager.Instance.playerCount == 1)
+        {
+            newSpawn = eagleReal;
+        }
+        else
+        {
+            newSpawn = enemyEagle;
+        }
     }
 
     public void SpawnShaman()
     {
         UnitSpawner(shamanPrefab,3);
+        if (BoltManager.Instance.playerCount == 1)
+        {
+            newSpawn = shamanReal;
+        }
+        else
+        {
+            newSpawn = enemyShaman;
+        }
     }
     private void UnitSpawner(GameObject go, int value)
     {
         if (!selected && BuyManager.Instance.mana >= value)
         {
-             cloneArcher = BoltNetwork.Instantiate(go, Input.mousePosition, Quaternion.identity);
+             cloneArcher = Instantiate(go, Input.mousePosition, Quaternion.identity);
              BuyManager.Instance.BuySoldier(value);
              selected = true;
         }

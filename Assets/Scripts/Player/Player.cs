@@ -1,11 +1,14 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using Lean.Pool;
+using Photon.Bolt;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : EntityBehaviour<ICharacters>
 {
     public ScriptableSettings scrData;
     
@@ -17,13 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject hpSliderGo;
     [SerializeField] private Slider slider;
     
-    
     private float currentHealth;
     private NavMeshAgent _agent;
     private Animator _animator;
     private GameObject _closestEnemy;
     [SerializeField]private bool targetLocated;
-
 
     private float AttackSpeed
     {
@@ -35,15 +36,23 @@ public class Player : MonoBehaviour
         }
     }
     
+    public override void Attached()
+    {
+        
+    }
+
+    public override void SimulateOwner()
+    {
+        if (currentHealth <= 0) Death();
+    }
+    
     private void Awake()
     {
         //CalculateLevelStats();
         currentHealth = scrData.health;
         slider.maxValue = scrData.health;
         slider.value = currentHealth; // Slider maxHealth And CurrentHealth set;
-       
     }
-
     private void Start()
     {
         if (!scrData.isBase)
@@ -57,14 +66,14 @@ public class Player : MonoBehaviour
         if (scrData.isMelee && scrData.isHealer)
             shootPosition = null;
     }
+    
 
     private void Update()
     {
         if (scrData.isBase) return;
         
         HpBarLookCamera();
-
-        if (!targetLocated)
+        if (!targetLocated && _agent.isActiveAndEnabled)
         {
             DistanceCheck();
         }
@@ -80,13 +89,14 @@ public class Player : MonoBehaviour
     public void TakeDamage(float value)
     {
         hpSliderGo.gameObject.SetActive(true);
-        currentHealth -= value;
+
+            currentHealth -= value;
         
         if (!scrData.isBase)
             EventParticleManager.OnDamageParticleSpawn(this.transform);
-        
-        if (currentHealth <= 0) Death();
-        UpdateHealth();  // Update HealthBar slider method
+        UpdateHealth(); 
+         
+        // Update HealthBar slider method
     }
 
     private void Death()
@@ -95,9 +105,9 @@ public class Player : MonoBehaviour
             GameManager.Instance.GameOver();
 
         GameManager.Instance.EnemyKill++;
-        Destroy(gameObject);
-    }
-
+        BoltNetwork.Destroy(gameObject);
+            
+    }  
     private void DistanceCheck()
     {
         // Check enemies given distance variable and choose closest one
@@ -131,6 +141,7 @@ public class Player : MonoBehaviour
         
         transform.DOLookAt(_closestEnemy.transform.position, 0.25f, AxisConstraint.Y);
         
+        
         _animator.SetBool("isRunning", false);
         _animator.SetBool("isAttacking", true);
         
@@ -140,7 +151,6 @@ public class Player : MonoBehaviour
 
     private void Attack()  // ------ Calling from animation attack event ------ //
     {
-        
         if (_closestEnemy == null)
         {
             targetLocated = false;
@@ -150,7 +160,8 @@ public class Player : MonoBehaviour
         if (scrData.isRange)
         {
             // OBJECT POOLING FOR SPAWNED ARROWS
-            var cloneArrow = LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity); 
+            //var cloneArrow = LeanPool.Spawn(arrowPrefab, shootPosition.position, Quaternion.identity); 
+            var cloneArrow = Instantiate(arrowPrefab, shootPosition.position, Quaternion.identity);
             cloneArrow.GetComponent<Arrow>().isPlayer = false;
             cloneArrow.transform.forward = _closestEnemy.transform.position;
             cloneArrow.GetComponent<Arrow>().targetTransform = _closestEnemy.transform;
@@ -174,7 +185,7 @@ public class Player : MonoBehaviour
 
     private void UpdateHealth()
     {
-        slider.DOValue(currentHealth, 0.5f);
+        slider.DOValue(currentHealth, 0.25f);
     }
     
     public void TakeHeal(float value)
