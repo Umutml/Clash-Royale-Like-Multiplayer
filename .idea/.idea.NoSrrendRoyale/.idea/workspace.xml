@@ -18,6 +18,7 @@
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Player/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/Scriptable/AbilitySettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ATD2/Assets/1-Game/Scripts/UI/DamagePopup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CamPositioner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Imports/GUI PRO Kit - Casual Game/Scripts/PanelControlCasualGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MenuController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -26,6 +27,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Editor/Settings/AddressableAssetSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/BoltManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/Scripts/Managers/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/Scripts/Player/Arrow.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SumoIO-NoSurrenderCase/Assets/Scripts/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6dcd1b87b12c4cf5a6c5762ba974179c4d000/b6/60df35c1/BoltNetwork.cs" root0="SKIP_HIGHLIGHTING" />
@@ -116,7 +119,9 @@
       <workItem from="1677003786127" duration="2692000" />
       <workItem from="1677051264983" duration="6106000" />
       <workItem from="1677059438131" duration="94000" />
-      <workItem from="1677059552954" duration="11547000" />
+      <workItem from="1677059552954" duration="12761000" />
+      <workItem from="1677146267967" duration="17620000" />
+      <workItem from="1677164410807" duration="3841000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,4 @@
+using Photon.Bolt;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int playerKill, enemyKill;
     [SerializeField] private TextMeshProUGUI playerKillText;
     [SerializeField] private TextMeshProUGUI enemyKillText;
+
+  
 
     public int PlayerKill
     {

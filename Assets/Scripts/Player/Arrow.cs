@@ -16,14 +16,12 @@ public class Arrow : MonoBehaviour
 
     private Vector3 targetPos;
 
-
-    
     
     private void Start()
     {
         if(targetTransform == null)
         {
-            Destroy(gameObject);
+            BoltNetwork.Destroy(gameObject);
             //Lean.Pool.LeanPool.Despawn(gameObject);
         }
     }
@@ -77,6 +75,6 @@ public class Arrow : MonoBehaviour
                 targetTransform.GetComponent<Player>().TakeDamage(arrowDamage);
         }
         //Lean.Pool.LeanPool.Despawn(gameObject);
-        Destroy(gameObject);
+        BoltNetwork.Destroy(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Bolt;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,11 +10,13 @@ public class EventParticleManager : MonoBehaviour
     public static event Action<Transform> OnHealParticleSpawnEvent;
     public static event Action<Transform> OnDamageParticleSpawnEvent;
     public static event Action<Transform> OnAuraParticleSpawnEvent;
+    public static event Action<Transform> OnDeathParticleSpawnEvent;
     
 
     [SerializeField] private GameObject auraParticle;
     [SerializeField] private GameObject[] healParticles;
     [SerializeField] private GameObject[] takeDamageParticles;
+    [SerializeField] private GameObject deathParticle;
 
     private Vector3 particleOffset = new Vector3(0, 1f, 0);
     
@@ -30,11 +33,17 @@ public class EventParticleManager : MonoBehaviour
         OnAuraParticleSpawnEvent?.Invoke(pos);
     }
 
+    public static void OnDeathParticleSpawn(Transform pos)
+    {
+        OnDeathParticleSpawnEvent?.Invoke(pos);
+    }
+
     private void OnEnable()
     {
         OnHealParticleSpawnEvent += SpawnHealParticle;
         OnDamageParticleSpawnEvent += SpawnDamageParticle;
         OnAuraParticleSpawnEvent += SpawnHealAura;
+        OnDeathParticleSpawnEvent += SpawnDeathParticle;
 
     }
 
@@ -43,6 +52,7 @@ public class EventParticleManager : MonoBehaviour
         OnHealParticleSpawnEvent -= SpawnHealParticle;
         OnDamageParticleSpawnEvent -= SpawnDamageParticle;
         OnAuraParticleSpawnEvent -= SpawnHealAura;
+        OnDeathParticleSpawnEvent -= SpawnDeathParticle;
     }
     
     private void SpawnHealParticle(Transform pos)
@@ -62,6 +72,12 @@ public class EventParticleManager : MonoBehaviour
     {
         var auraClone = Instantiate(auraParticle, pos.position, Quaternion.Euler(90,0,0), pos.transform);
         Destroy(auraClone,2f);
+    }
+
+    private void SpawnDeathParticle(Transform pos)
+    {
+        BoltNetwork.Instantiate(deathParticle, pos.position, Quaternion.identity);
+       
     }
 
    

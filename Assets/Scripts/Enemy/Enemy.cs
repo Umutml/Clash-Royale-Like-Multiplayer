@@ -43,8 +43,8 @@ public class Enemy : EntityBehaviour<ICharacters>
 
     public override void SimulateOwner()
     {
-       
         if (currentHealth <= 0) Death();
+        
     }
     
     private void Awake()
@@ -70,7 +70,7 @@ public class Enemy : EntityBehaviour<ICharacters>
     private void Update()
     {
         if (scrData.isBase) return;
-
+        
         HpBarLookCamera();
         
         if (!_targetLocated)
@@ -107,6 +107,7 @@ public class Enemy : EntityBehaviour<ICharacters>
         GameManager.Instance.PlayerKill++;
         
             BoltNetwork.Destroy(this.gameObject);
+            EventParticleManager.OnDeathParticleSpawn(this.transform);
         
     }
 

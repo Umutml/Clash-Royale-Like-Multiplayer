@@ -43,10 +43,7 @@ public class MenuController : GlobalEventListener
                 BoltMatchmaking.JoinSession(photonsession);
         }
     }
-
-
     
-   
 
     private void OnApplicationQuit()
     {

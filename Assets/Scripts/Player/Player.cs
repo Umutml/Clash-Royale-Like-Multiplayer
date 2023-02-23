@@ -36,11 +36,7 @@ public class Player : EntityBehaviour<ICharacters>
         }
     }
     
-    public override void Attached()
-    {
-        
-    }
-
+   
     public override void SimulateOwner()
     {
         if (currentHealth <= 0) Death();
@@ -106,6 +102,7 @@ public class Player : EntityBehaviour<ICharacters>
 
         GameManager.Instance.EnemyKill++;
         BoltNetwork.Destroy(gameObject);
+        EventParticleManager.OnDeathParticleSpawn(this.transform);
             
     }  
     private void DistanceCheck()
