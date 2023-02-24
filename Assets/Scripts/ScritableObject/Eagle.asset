@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Eagle
   m_EditorClassIdentifier: 
   unitName: Eagle
-  damage: 1.5
-  moveSpeed: 1.5
-  health: 3
-  distance: 6
+  damage: 133
+  moveSpeed: 2.5
+  health: 957
+  distance: 5
   healAmount: 0
-  attackSpeed: 1
+  attackSpeed: 1.5
   multiplier: 0.1
   level: 1
   isMelee: 0

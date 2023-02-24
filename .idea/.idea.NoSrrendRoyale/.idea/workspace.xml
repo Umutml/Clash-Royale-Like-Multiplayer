@@ -30,6 +30,8 @@
     <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/BoltManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/Scripts/Managers/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_0/Assets/Scripts/Player/Arrow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_1/Assets/CamPositioner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../NoSrrendRoyale_clone_1/Assets/Scripts/Managers/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SumoIO-NoSurrenderCase/Assets/Scripts/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6dcd1b87b12c4cf5a6c5762ba974179c4d000/b6/60df35c1/BoltNetwork.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6dcd1b87b12c4cf5a6c5762ba974179c4d000/d6/b214584a/BoltCore.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,7 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Console Font&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Inspections-C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -122,6 +124,8 @@
       <workItem from="1677059552954" duration="12761000" />
       <workItem from="1677146267967" duration="17620000" />
       <workItem from="1677164410807" duration="3841000" />
+      <workItem from="1677184644628" duration="1320000" />
+      <workItem from="1677228427887" duration="5605000" />
     </task>
     <servers />
   </component>

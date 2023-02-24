@@ -16,7 +16,7 @@ public class Timer : GlobalEventListener
     private bool canStart;
     
     [SerializeField] private GameObject hostPanel;
-    [SerializeField]private int playercount;
+    [SerializeField] private int timerCounts;
 
     void Update()
     {
@@ -25,12 +25,25 @@ public class Timer : GlobalEventListener
             hostPanel.SetActive(true);
         }
         
-        foreach (var session in BoltNetwork.SessionList)
-        {
-            playercount += session.Value.ConnectionsCurrent;
-        }
+        // foreach (var session in BoltNetwork.SessionList)
+        // {
+        //     playercount = session.Value.ConnectionsCurrent;
+        // }
         
-        if (playercount > 1)
+        
+        //foreach (var session in BoltNetwork.SessionList)
+        //{
+        //    timerCounts = session.Value.ConnectionsCurrent;
+
+        //}
+        
+        //if (timerCounts >= 1)
+        //{
+        //    canStart = true;
+        //}
+
+
+        if(GameManager.Instance.pCount  >= 1)
         {
             canStart = true;
         }
@@ -52,10 +65,10 @@ public class Timer : GlobalEventListener
         }
     }
     
-   // public override void OnEvent(TimerStart count)
-   // {
-   //     playercount = count.playerCounts;
-    //}
+    //public override void OnEvent(TimerStart count)
+    //{
+      //  playercount = count.playerCounts;
+   // }
    
   
 }

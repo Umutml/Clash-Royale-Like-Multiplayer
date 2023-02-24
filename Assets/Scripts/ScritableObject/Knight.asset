@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   unitName: Knight
-  damage: 1.5
+  damage: 167
   moveSpeed: 2
-  health: 8
-  distance: 1.5
+  health: 750
+  distance: 2.5
   healAmount: 0
   attackSpeed: 1.5
   multiplier: 0.1

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private int playerKill, enemyKill;
     [SerializeField] private TextMeshProUGUI playerKillText;
     [SerializeField] private TextMeshProUGUI enemyKillText;
-
+    public int pCount;
   
 
     public int PlayerKill
@@ -37,9 +37,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
     public void GameOver()

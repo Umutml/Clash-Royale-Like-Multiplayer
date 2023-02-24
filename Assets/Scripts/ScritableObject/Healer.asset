@@ -15,9 +15,9 @@ MonoBehaviour:
   unitName: Shaman
   damage: 0
   moveSpeed: 1
-  health: 5
-  distance: 7
-  healAmount: 3
+  health: 957
+  distance: 6
+  healAmount: 300
   attackSpeed: 2
   multiplier: 0.1
   level: 1

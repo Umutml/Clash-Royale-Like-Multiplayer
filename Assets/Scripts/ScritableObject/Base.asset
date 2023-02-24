@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Base
   damage: 0
   moveSpeed: 0
-  health: 25
+  health: 2568
   distance: 0
   healAmount: 0
   attackSpeed: 0

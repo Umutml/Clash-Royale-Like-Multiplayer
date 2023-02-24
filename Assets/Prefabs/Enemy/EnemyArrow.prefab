@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowDamage: 1
   targetTransform: {fileID: 0}
-  arrowSpeed: 6
+  arrowSpeed: 10
   isPlayer: 0
 --- !u!1001 &498918349284899827
 PrefabInstance:

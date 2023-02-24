@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   unitName: Archer
-  damage: 1
+  damage: 89
   moveSpeed: 2
-  health: 4
+  health: 252
   distance: 5
   healAmount: 0
   attackSpeed: 2

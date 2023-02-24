@@ -4842,6 +4842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time_Score (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5637587495437062604, guid: 9ef3c709bb6d37d4ca21acfa20b34585, type: 3}
+      propertyPath: m_text
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef3c709bb6d37d4ca21acfa20b34585, type: 3}
 --- !u!224 &3330865008123892100 stripped

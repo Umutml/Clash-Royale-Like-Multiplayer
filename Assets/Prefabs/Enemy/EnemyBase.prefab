@@ -134,10 +134,10 @@ MonoBehaviour:
   scrData: {fileID: 11400000, guid: 4d46fc265f5f7d54aa563998d1f9a4fc, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  playerBaseTransform: {fileID: 0}
+    m_Bits: 128
+  playerBaseTransform: {fileID: 1481805471968320995, guid: 4468fe5499cf910468d1b17bf6cc0be2, type: 3}
   shootPosition: {fileID: 0}
-  arrowPrefab: {fileID: 0}
+  arrowPrefab: {fileID: 8615100112981678891, guid: 479be2338872d7e4f8afb00ae60a53e4, type: 3}
   hpSliderGo: {fileID: 7477309447794072752}
   slider: {fileID: 7477309448199922712}
 --- !u!65 &6880822240283529248

@@ -1,17 +1,15 @@
-using System;
-using System.Collections;
 using DG.Tweening;
-using Lean.Pool;
 using Photon.Bolt;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Player : EntityBehaviour<ICharacters>
 {
     public ScriptableSettings scrData;
-    
+
     [Header("References")]
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private Transform enemyBaseTransform;
@@ -19,12 +17,12 @@ public class Player : EntityBehaviour<ICharacters>
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private GameObject hpSliderGo;
     [SerializeField] private Slider slider;
-    
+
     private float currentHealth;
     private NavMeshAgent _agent;
     private Animator _animator;
     private GameObject _closestEnemy;
-    [SerializeField]private bool targetLocated;
+    [SerializeField] private bool targetLocated;
 
     private float AttackSpeed
     {
@@ -35,22 +33,28 @@ public class Player : EntityBehaviour<ICharacters>
             _animator.SetFloat("AttackSpeed", scrData.attackSpeed);
         }
     }
-    
-   
+
+    public override void Attached()
+    {
+        state.SetTransforms(state.CharacterTransform, transform);
+
+        if (entity.IsOwner)
+        {
+            state.CharHealth = scrData.health;
+        }
+            
+    }
+
+
     public override void SimulateOwner()
     {
-        if (currentHealth <= 0) Death();
+        state.CharHealth = currentHealth;
+        if (state.CharHealth <= 0) Death();
     }
-    
+
     private void Awake()
     {
         //CalculateLevelStats();
-        currentHealth = scrData.health;
-        slider.maxValue = scrData.health;
-        slider.value = currentHealth; // Slider maxHealth And CurrentHealth set;
-    }
-    private void Start()
-    {
         if (!scrData.isBase)
         {
             _animator = GetComponent<Animator>();
@@ -59,15 +63,18 @@ public class Player : EntityBehaviour<ICharacters>
             _agent.speed = scrData.moveSpeed;
             AttackSpeed = scrData.attackSpeed;
         }
+
+        currentHealth = scrData.health;
+        slider.maxValue = scrData.health;
+        slider.value = currentHealth;     // Slider maxHealth And CurrentHealth set;
+
         if (scrData.isMelee && scrData.isHealer)
             shootPosition = null;
     }
-    
-
     private void Update()
     {
         if (scrData.isBase) return;
-        
+
         HpBarLookCamera();
         if (!targetLocated && _agent.isActiveAndEnabled)
         {
@@ -86,12 +93,13 @@ public class Player : EntityBehaviour<ICharacters>
     {
         hpSliderGo.gameObject.SetActive(true);
 
-            currentHealth -= value;
-        
+        currentHealth -= value;
+
         if (!scrData.isBase)
             EventParticleManager.OnDamageParticleSpawn(this.transform);
-        UpdateHealth(); 
-         
+        
+        UpdateHealth();
+
         // Update HealthBar slider method
     }
 
@@ -100,11 +108,14 @@ public class Player : EntityBehaviour<ICharacters>
         if (scrData.isBase)
             GameManager.Instance.GameOver();
 
-        GameManager.Instance.EnemyKill++;
+        GameManager.Instance.EnemyKill += Random.Range(1, 2);
+        GameManager.Instance.PlayerKill += Random.Range(1, 2);
+
         BoltNetwork.Destroy(gameObject);
+
         EventParticleManager.OnDeathParticleSpawn(this.transform);
-            
-    }  
+
+    }
     private void DistanceCheck()
     {
         // Check enemies given distance variable and choose closest one
@@ -118,7 +129,7 @@ public class Player : EntityBehaviour<ICharacters>
             _animator.SetBool("isRunning", true);
             return;
         }
-        
+
         if (hitColliders.Length == 0)
         {
             _agent.speed = scrData.moveSpeed;
@@ -129,21 +140,21 @@ public class Player : EntityBehaviour<ICharacters>
         }
 
         _closestEnemy = hitColliders[0].gameObject;
-        
+
         if (scrData.isHealer)
         {
             var closestScript = _closestEnemy.GetComponent<Player>();                          //Check closest unity health value for decide heal unit or return;
-            if (Math.Abs(closestScript.currentHealth - closestScript.scrData.health) < 0.8f) return; // Last value is a 0.5f Tolerance
+            if (Math.Abs(closestScript.state.CharHealth - closestScript.scrData.health) < 0.5f) return; // Last value is a 0.5f Tolerance
         }
-        
+
         transform.DOLookAt(_closestEnemy.transform.position, 0.25f, AxisConstraint.Y);
-        
-        
+
+
         _animator.SetBool("isRunning", false);
         _animator.SetBool("isAttacking", true);
-        
         _agent.speed = 0;
         targetLocated = true;
+
     }
 
     private void Attack()  // ------ Calling from animation attack event ------ //
@@ -152,8 +163,9 @@ public class Player : EntityBehaviour<ICharacters>
         {
             targetLocated = false;
             return;
+
         }
-        
+
         if (scrData.isRange)
         {
             // OBJECT POOLING FOR SPAWNED ARROWS
@@ -184,21 +196,21 @@ public class Player : EntityBehaviour<ICharacters>
     {
         slider.DOValue(currentHealth, 0.25f);
     }
-    
+
     public void TakeHeal(float value)
     {
-        currentHealth = Mathf.Clamp(currentHealth += value,0 , scrData.health);
+        currentHealth = Mathf.Clamp(currentHealth += value, 0, scrData.health);
         EventParticleManager.OnHealParticleSpawn(this.transform);
         UpdateHealth();
     }
 
-   // private void CalculateLevelStats()
-   // {
+    // private void CalculateLevelStats()
+    // {
     //    scrData.damage += scrData.level * scrData.multiplier;
     //    scrData.moveSpeed += scrData.level * scrData.multiplier;
     //    scrData.health += scrData.level * scrData.multiplier;
     //    scrData.attackSpeed += scrData.level * scrData.multiplier;
     //    scrData.distance += scrData.level * scrData.multiplier;
     //}
-   
+
 }

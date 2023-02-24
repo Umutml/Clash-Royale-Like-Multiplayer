@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Tower
   m_EditorClassIdentifier: 
   unitName: Tower
-  damage: 1
+  damage: 54
   moveSpeed: 0
-  health: 15
-  distance: 7
+  health: 1512
+  distance: 7.5
   healAmount: 0
-  attackSpeed: 1
+  attackSpeed: 0.8
   multiplier: 0.1
   level: 1
   isMelee: 0
