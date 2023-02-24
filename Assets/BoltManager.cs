@@ -7,9 +7,6 @@ using Event = UnityEngine.Event;
 [BoltGlobalBehaviour(BoltNetworkModes.Client)]
 public class BoltManager : GlobalEventListener
 {
-   
-    
-
     
     public int playerCount;
 
@@ -27,13 +24,13 @@ public class BoltManager : GlobalEventListener
       //  {
       //      evnt.CameraPosition = _player1CameraPosition;
        //     evnt.CameraRotation = _player1CameraRotation;
-      //      Debug.Log("1 GIRILDI");
+      //      
       //  }
        // else
       //  {
        //     evnt.CameraPosition = _player2CameraPosition;
        //     evnt.CameraRotation = _player2CameraRotation;
-       //     Debug.Log("2 GIRILDI");
+       //     
         //}
 
         evnt.Send();

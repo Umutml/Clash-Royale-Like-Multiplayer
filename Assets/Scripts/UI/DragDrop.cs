@@ -13,7 +13,7 @@ public class DragDrop : GlobalEventListener
     [SerializeField] private Transform unitHolder;
     public int playerCount;
 
-
+    GameObject testg;
 
     private GameObject cloneArcher;
     private Camera mainCamera;
@@ -39,6 +39,7 @@ public class DragDrop : GlobalEventListener
         if (GameManager.Instance.pCount > 1)
         {
             playerGround = enemyGround;
+            
         }
         if (Physics.Raycast(ray, out var raycastHit, layerMask) && selected)
         {
@@ -46,6 +47,8 @@ public class DragDrop : GlobalEventListener
             {
                 cloneArcher.transform.position = raycastHit.point;
                 dragCanvGroup.alpha = 0.1f;
+                //testg = raycastHit.transform.GetChild(0).GetChild(0).gameObject;
+                //testg.SetActive(true);
             }
             else
             {
@@ -53,6 +56,8 @@ public class DragDrop : GlobalEventListener
                 selected = false;
                 dragCanvGroup.alpha = 1;
                 BuyManager.Instance.mana += 3;
+                //testg.SetActive(false);
+
             }
 
             if (touch.phase is TouchPhase.Ended or TouchPhase.Canceled && selected)
