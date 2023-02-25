@@ -1,7 +1,7 @@
 # ClashRoyale-Clone
 In this project, I developed a Clash Royale-like clone. It works in a multiplayer format where four units are on our side and four units are on the opponent's side.
 
- Units
+ -Units-
 
 // Range
 // Melee
@@ -14,22 +14,22 @@ and I used Addressable cloud content delivery technology as a hobby project to i
 a popup is given to the user asking if they want to download the 5.4 MB scene over the cloud using the Addressable system. 
 The next scene is loaded after receiving input from the other side. The game ends when towers and bases are lost, and the next scene is loaded.
 
-Technologies used:
+--Technologies used--
 
-Photon Bolt for networking
-Addressables Cloud Content Delivery
-Navmesh AI
-Scriptable objects for unit stats
-Singleton
-Dotween
-Observer Pattern
-Event based comms.
+-Photon Bolt for networking
+-Addressables Cloud Content Delivery
+-Navmesh AI
+-Scriptable objects for unit stats
+-Singleton
+-Dotween
+-Observer Pattern
+-Event based comms.
 
-Assets
+-Assets
 
-Polygon Vikings Assetpack
-Epic Toon Fx
-Gui mobile pro kit
+-Polygon Vikings Assetpack
+-Epic Toon Fx
+-Gui mobile pro kit
 
 It was developed with performance issues in mind, and a combat mechanism was provided using distance check methods without collision.
 I tested it on mobile platforms and provided a multiplayer gameplay.
