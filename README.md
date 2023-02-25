@@ -1,12 +1,13 @@
 # ClashRoyale-Clone
 In this project, I developed a Clash Royale-like clone. It works in a multiplayer format where four units are on our side and four units are on the opponent's side.
 
-Units
+ Units
 
-Range
-Melee
-Healer
-Aerial (Dragon-Bird-Eagle, etc.)
+// Range
+// Melee
+// Healer
+// Aerial (Dragon-Bird-Eagle, etc.)
+
 Using Photon Bolt technology, I created a structure for multiplayer matches between two clients that connect to a server in a server-authorized system. 
 Units with different mana-based costs, which can be left in their own areas, can be regenerated on the bottom. Character stats were balanced,
 and I used Addressable cloud content delivery technology as a hobby project to improve myself. When the section is finished and the second side is switched,
