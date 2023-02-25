@@ -1,15 +1,17 @@
 # ClashRoyale-Clone
 
-GAMEPLAY FirstDay
+## **GAMEPLAY FirstDay**
+
 https://user-images.githubusercontent.com/118080093/221353090-f4aa39d1-54d7-4439-8e2c-67730f680d18.mp4
 
-GAMEPLAY LastDay
+## **GAMEPLAY LastDay**
+
 https://user-images.githubusercontent.com/118080093/221353066-b6250bc2-c282-4504-899d-9b2dbd1625ec.mp4
 
 
 In this project, I developed a Clash Royale-like clone. It works in a multiplayer format where four units are on our side and four units are on the opponent's side.
 
- -Units-
+ ## **-Units-**
 
 // Range
 // Melee
@@ -22,7 +24,7 @@ and I used Addressable cloud content delivery technology as a hobby project to i
 a popup is given to the user asking if they want to download the 5.4 MB scene over the cloud using the Addressable system. 
 The next scene is loaded after receiving input from the other side. The game ends when towers and bases are lost, and the next scene is loaded.
 
---Technologies used--
+## **--Technologies used--**
 
 -Photon Bolt for networking
 -Addressables Cloud Content Delivery
