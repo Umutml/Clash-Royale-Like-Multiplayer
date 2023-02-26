@@ -1,10 +1,10 @@
 # ClashRoyale-Clone
 
-## **Gameplay First Day**
+## **Gameplay first day**
 
 https://user-images.githubusercontent.com/118080093/221353090-f4aa39d1-54d7-4439-8e2c-67730f680d18.mp4
 
-## **Gameplay last Day**
+## **Gameplay last day**
 
 https://user-images.githubusercontent.com/118080093/221353066-b6250bc2-c282-4504-899d-9b2dbd1625ec.mp4
 
