@@ -1,5 +1,4 @@
 # ClashRoyale-Clone
-
 I developed a Clash Royale-like clone in 10-12 days. It works in a multiplayer format where four units are on our side and four units are on the opponent's side.
 
 ## **Gameplay first day**
